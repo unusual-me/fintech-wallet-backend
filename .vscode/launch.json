@@ -1,0 +1,15 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Launch Server",               // Name shown in VSCode debugger
+      "type": "node",                        // Node.js debugger
+      "request": "launch",                   // Launch a program
+      "program": "${workspaceFolder}/dist/server.js",  // Entry point (compiled JS)
+      "preLaunchTask": "tsc: build - tsconfig.json",   // Compile TS before running
+      "outFiles": ["${workspaceFolder}/dist/**/*.js"], // Where compiled JS lives
+      "cwd": "${workspaceFolder}",           // Current working directory
+      "console": "integratedTerminal"        // Use VSCode terminal
+    }
+  ]
+}
