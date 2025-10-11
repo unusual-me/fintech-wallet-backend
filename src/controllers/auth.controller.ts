@@ -2,9 +2,9 @@ import { Request, Response } from "express";
 import { User } from "../models/user.model";
 import { Wallet } from "../models/wallet.model";
 import jwt from "jsonwebtoken";
-import { Schema, Document, Types } from "mongoose";
+import { Types } from "mongoose";
 import "joi";
-import { signupSchema , loginSchema, changePasswordSchema} from "../services/validationSchema"
+import { signupSchema , loginSchema, changePasswordSchema} from "../utils/validations/authSchema"
 
 const JWT_SECRET = process.env.JWT_SECRET || "supersecretkey";
 
