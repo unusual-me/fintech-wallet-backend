@@ -14,3 +14,17 @@ export const loginSchema = Joi.object({
     email: Joi.string().email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } }).messages({"string.pattern.base": "Invalid Credentials"}),
     password: Joi.string().pattern(new RegExp('^[a-zA-Z0-9]{3,30}$')).messages({"string.pattern.base": "Invalid Credentials"}),
 })
+
+
+export const changePasswordSchema = Joi.object({
+  email: Joi.string()
+    .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } })
+    .required(),
+  old_password: Joi.string().min(3).max(30).required(),
+  new_password: Joi.string()
+    .pattern(new RegExp('^[a-zA-Z0-9]{3,30}$'))
+    .required()
+    .messages({
+      'string.pattern.base': 'Password must be alphanumeric and 3-30 characters.'
+    })
+});
