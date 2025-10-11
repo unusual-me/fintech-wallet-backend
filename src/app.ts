@@ -2,7 +2,8 @@ import express from "express";
 import cors from "cors";
 
 // Import routes — use relative paths from `src/`
-import authRoutes from "./routes/auth.routes";
+import routes from "./routes/routes";
+
 
 const app = express();
 
@@ -22,7 +23,7 @@ app.get("/health", (req, res) => {
 // ------------------------
 // API Routes
 // ------------------------
-app.use("/api/auth", authRoutes);
+app.use("/api", routes);
 
 // ------------------------
 // Export the app
