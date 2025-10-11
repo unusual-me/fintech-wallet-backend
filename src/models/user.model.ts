@@ -6,24 +6,24 @@ export interface IUser extends Document {
   email: string;
   password: string;
   mobile?: string;
-  wallet: Types.ObjectId;
+  wallet?: Types.ObjectId; //singular, optional because user might not have wallet yet
   createdAt: Date;
   updatedAt: Date;
   comparePassword: (candidatePassword: string) => Promise<boolean>;
 }
 
-const UserSchema: Schema = new Schema(
+const UserSchema: Schema<IUser> = new Schema(
   {
     name: { type: String, required: true },
     email: { type: String, required: true, unique: true, lowercase: true },
     password: { type: String, required: true },
     mobile: { type: String },
-    wallet: { type: Schema.Types.ObjectId, ref: "Wallet" },
+    wallet: { type: Schema.Types.ObjectId, ref: "Wallet" }, // singular
   },
   { timestamps: true }
 );
 
-// Password hashing before saving
+// Password hashing
 UserSchema.pre<IUser>("save", async function (next) {
   if (!this.isModified("password")) return next();
   const salt = await bcrypt.genSalt(10);
