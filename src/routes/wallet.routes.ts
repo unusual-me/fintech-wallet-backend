@@ -3,6 +3,6 @@ import { getWalletBalance } from "../controllers/wallet.controller";
 
 const router = Router();
 
-router.get("/balance", getWalletBalance);
+router.post("/balance", getWalletBalance);
 
 export default router;
