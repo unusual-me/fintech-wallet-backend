@@ -7,9 +7,9 @@ import transactionRoutes from "./transaction.routes";
 const router = Router();
 
 // Base path mapping for each module
-router.use("/auth", authRoutes);
-router.use("/users", userRoutes);
-router.use("/wallets", walletRoutes);
-router.use("/transactions", transactionRoutes);
+router.use("/v1/auth", authRoutes);
+router.use("/v1/users", userRoutes);
+router.use("/v1/wallets", walletRoutes);
+router.use("/v1/transactions", transactionRoutes);
 
 export default router;
